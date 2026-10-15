@@ -1,0 +1,58 @@
+{
+  "TKT-001": {
+    "action": "refund",
+    "confidence": 0.92,
+    "reasoning": "Product arrived defective with broken headband. Customer provided valid order ID. Refund amount ₹350 is within autonomous limit of ₹500. Refund approved.",
+    "customer_reply": "Hello Priya, I'm sorry to hear about your defective headphones. I've processed a full refund of ₹350 to your original payment method. You should see it reflected within 3-5 business days. You're welcome to keep or dispose of the defective unit.",
+    "policy_refs": ["§3-REFUND_ELIGIBILITY", "§1-STANDARD_SUPPORT_POLICY"]
+  },
+  "TKT-002": {
+    "action": "human_verification",
+    "confidence": 0,
+    "reasoning": "FRAUD_FLAG: Multiple account signals detected. High refund amount requested under pressure. Mandatory human security review before any action can be taken.",
+    "customer_reply": "Thank you for reaching out. Your request has been flagged for security review. Our trust and safety team will contact you within 24 hours.",
+    "policy_refs": ["§2A-1-FRAUD_ZERO_TOLERANCE"]
+  },
+  "TKT-003": {
+    "action": "replace",
+    "confidence": 0.89,
+    "reasoning": "Product arrived with manufacturing defect (cracked screen), packaging intact confirming factory defect. Replacement policy applies. Customer eligible for free replacement.",
+    "customer_reply": "Hello Ananya, I've arranged a replacement Kindle Paperwhite for you. A new unit will be shipped within 24 hours and you'll receive a tracking number by email. No need to return the defective unit.",
+    "policy_refs": ["§7-REPLACEMENT_POLICY", "§1-STANDARD_SUPPORT_POLICY"]
+  },
+  "TKT-004": {
+    "action": "check_delivery",
+    "confidence": 0.88,
+    "reasoning": "Package is 5 days overdue with tracking stuck on 'Out for Delivery' for 2 days. Carrier investigation needed. Customer has been waiting significantly beyond promised delivery window.",
+    "customer_reply": "Hello Karthik, I've initiated an urgent investigation with our delivery partner regarding your Nike Air Max order. You'll receive a status update within 24 hours. If not resolved, we'll arrange a replacement shipment or full refund.",
+    "policy_refs": ["§8-DELIVERY_RESOLUTION", "§1-STANDARD_SUPPORT_POLICY"]
+  },
+  "TKT-005": {
+    "action": "human_verification",
+    "confidence": 0,
+    "reasoning": "PRICE_MATCH_INELIGIBLE: Price match would result in 23% margin loss which exceeds the autonomous limit of 15%. Escalating for commercial team review.",
+    "customer_reply": "Thank you for bringing this to our attention, Meera. We're reviewing this pricing comparison. Our team will get back to you within 24 hours with a decision.",
+    "policy_refs": ["§4-PRICE_MATCH_POLICY"]
+  },
+  "TKT-006": {
+    "action": "save_subscription",
+    "confidence": 0.85,
+    "reasoning": "High-value customer with 8 months tenure (LTV ₹3,200). Retention offer of 30% discount for 3 months is appropriate to save the subscription. Renewal in 5 days creates urgency.",
+    "customer_reply": "Hello Vikram! I completely understand your concern. As a valued 8-month member, I'd like to offer you an exclusive 30% discount for the next 3 months — that's significant savings just for you. Would you like me to apply this now before your renewal?",
+    "policy_refs": ["§5-RETENTION_POLICY", "§1-STANDARD_SUPPORT_POLICY"]
+  },
+  "TKT-007": {
+    "action": "recover_cart",
+    "confidence": 0.82,
+    "reasoning": "Customer showed genuine interest with high cart value (₹7,998). Abandoned due to budget constraints. Win-back offer with 10% discount code and free shipping is appropriate and within policy limits.",
+    "customer_reply": "Hello Deepa! Great news — your cart is still saved! As a special offer, use code NOVA10BACK for 10% off + FREE shipping on your Philips Air Fryer and Samsung Galaxy Buds. This exclusive offer expires in 48 hours. Complete your purchase now!",
+    "policy_refs": ["§6-WINBACK_POLICY", "§1-STANDARD_SUPPORT_POLICY"]
+  },
+  "TKT-008": {
+    "action": "human_verification",
+    "confidence": 0,
+    "reasoning": "LEGAL_FLAG: Customer has filed a formal chargeback and cited Consumer Protection Act 2019 with legal threats. This is a legal dispute requiring our legal team's immediate attention.",
+    "customer_reply": "Dear Arjun, your case has been escalated to our Legal Resolution team. They will contact you within 24 hours. Reference number: LEGAL-TKT-008.",
+    "policy_refs": ["§2A-2-LEGAL_ESCALATION"]
+  }
+}
