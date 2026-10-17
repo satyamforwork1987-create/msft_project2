@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { CustomerSupportWidget } from '@/components/CustomerSupportWidget';
 
 interface Product {
@@ -92,7 +93,7 @@ const RECENT_ORDERS = [
   {
     orderId: 'ORD-78923',
     item: 'Sony WH-1000XM4 Headband Replacement / Item',
-    customer: 'Priya Sharma',
+    customer: 'Priya Chauhan',
     amount: 350,
     date: 'Oct 12, 2026',
     status: 'Delivered (Defect Reported)',
@@ -132,6 +133,7 @@ const RECENT_ORDERS = [
 ];
 
 export default function StorefrontPage() {
+  const router = useRouter();
   const [cartCount, setCartCount] = useState(2);
   const [activeCategory, setActiveCategory] = useState('All');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -220,8 +222,8 @@ export default function StorefrontPage() {
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               <span>24/7 AI Support Active</span>
             </div>
-            <button
-              onClick={() => showToast('Demo cart updated!')}
+            <Link
+              href="/store/cart"
               className="relative p-2 rounded-full hover:bg-stone-200/60 transition-colors text-stone-700"
               title="View Cart"
             >
@@ -231,7 +233,7 @@ export default function StorefrontPage() {
                   {cartCount}
                 </span>
               )}
-            </button>
+            </Link>
           </div>
         </div>
       </header>
@@ -283,7 +285,7 @@ export default function StorefrontPage() {
               <div className="flex items-center gap-2">
                 <span className="text-lg">📦</span>
                 <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#1E1812]">
-                  Customer Account: Priya Sharma
+                  Customer Account: Priya Chauhan
                 </h2>
               </div>
               <p className="text-xs text-stone-500 mt-1">
@@ -400,6 +402,7 @@ export default function StorefrontPage() {
                   onClick={() => {
                     setCartCount((c) => c + 1);
                     showToast(`Added ${p.name.slice(0, 20)}... to cart!`);
+                    setTimeout(() => router.push('/store/cart'), 1200);
                   }}
                   className="px-4 py-2 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-medium text-xs transition-colors"
                 >
@@ -429,7 +432,7 @@ export default function StorefrontPage() {
               Nova Agent Console
             </Link>
             <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-stone-800">
-              SIH 2026 Hackathon Demo
+              GitHub
             </a>
           </div>
         </div>

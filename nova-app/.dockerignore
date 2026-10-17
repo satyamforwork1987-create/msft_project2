@@ -1,0 +1,33 @@
+# Version control
+.git
+.gitignore
+
+# Dev / CI artefacts
+.next
+out
+build
+coverage
+
+# Dependencies (rebuilt inside the image)
+node_modules
+
+# Local env files – never bake secrets into the image
+.env
+.env.local
+.env.*.local
+
+# Editor / OS noise
+.DS_Store
+*.pem
+.vscode
+.idea
+
+# Docker files themselves
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Docs / scripts not needed at runtime
+README.md
+AGENTS.md
+# scripts

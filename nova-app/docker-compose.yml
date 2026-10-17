@@ -1,0 +1,45 @@
+services:
+  nova-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # NEXT_PUBLIC_* vars must be passed at build time so Next.js can embed
+      # them in the client bundle. They are read from the host environment or
+      # the .env file below.
+      args:
+        NEXT_PUBLIC_SUPABASE_URL:      ${NEXT_PUBLIC_SUPABASE_URL}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+
+    image: nova-app:latest
+
+    container_name: nova-app
+
+    restart: unless-stopped
+
+    ports:
+      - "3000:3000"
+
+    # Runtime-only secrets — never baked into the image layer.
+    environment:
+      NODE_ENV:                    production
+      NEXT_PUBLIC_SUPABASE_URL:    ${NEXT_PUBLIC_SUPABASE_URL}
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+      SUPABASE_SERVICE_ROLE_KEY:   ${SUPABASE_SERVICE_ROLE_KEY}
+      GEMINI_API_KEY:              ${GEMINI_API_KEY}
+      GROQ_API_KEY:                ${GROQ_API_KEY}
+      DEMO_MODE:                   ${DEMO_MODE:-false}
+
+    # docker-compose automatically loads .env from the project root
+    env_file:
+      - .env
+
+    # Persist the data directory if you use local JSON fixtures
+    volumes:
+      - ./data:/app/data:ro
+
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout:  10s
+      retries:  3
+      start_period: 15s
